@@ -22,7 +22,31 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
+        display: ['Playfair Display', 'serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            h1: {
+              fontFamily: 'Playfair Display, serif',
+              fontWeight: '700',
+            },
+            h2: {
+              fontFamily: 'Playfair Display, serif',
+              fontWeight: '600',
+            },
+            h3: {
+              fontFamily: 'Playfair Display, serif',
+              fontWeight: '500',
+            },
+            p: {
+              fontFamily: 'Poppins, sans-serif',
+              fontWeight: '400',
+            },
+          },
+        },
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

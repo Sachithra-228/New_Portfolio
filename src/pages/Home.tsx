@@ -1,14 +1,11 @@
-import React, { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { 
   CodeBracketIcon, 
   VideoCameraIcon, 
-  UserGroupIcon,
   RocketLaunchIcon,
-  CommandLineIcon,
-  PaintBrushIcon,
   ArrowLeftIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
@@ -18,11 +15,17 @@ import flashImage from '../images/flash.jpg';
 import walkingImage from '../images/walking.jpg';
 import speechImage from '../images/speech.jpg';
 
+// Project images
+import todoAppImage from '../images/todoapp.jpg';
+import quizAppImage from '../images/quizapp.jpg';
+import votingSystemImage from '../images/votingsystem.jpg';
+import financeTrackerImage from '../images/financetracker.jpg';
+import womanSafetyTrackerImage from '../images/womansafetytrackerapp.jpg';
+import musicTrackerImage from '../images/musictrack.jpg';
 
 import flashVideo from '../videos/flash.mp4';
 import walkingVideo from '../videos/walking.mp4';
 import speechVideo from '../videos/speech.mp4';
-
 
 // Import the Chatbot component
 import Chatbot from '../components/Chatbot';
@@ -31,28 +34,92 @@ import Typewriter from '../components/Typewriter';
 const Home = () => {
   const [selectedApp, setSelectedApp] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<{ src: string; title: string } | null>(null);
+  const [currentSetIndex, setCurrentSetIndex] = useState(0);
+  const [isCycling, setIsCycling] = useState(true);
+
+  const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
+
+  const playlistIds = [
+    'PLywgqKvsv_-2Dy2lBhgVwjYUVHyTWUl5L',
+    'PLywgqKvsv_-2hNjTrbr3ILLPz86M5mf0B',
+    'PLywgqKvsv_-3YECZGJamkHI0nBn48u_-S',
+    'PLywgqKvsv_-2hIC_T6gK4Yu34e6i0_H_2',
+    'PLywgqKvsv_-26oxRu41Y4qY3JwOfH6S7m',
+    'PLywgqKvsv_-1eYjoElhXEC90UM2WtK1iu',
+    'PLywgqKvsv_-0tcVb93raISiujJPTx10WT',
+  ];
+
+  useEffect(() => {
+    if (isCycling) {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      intervalRef.current = setInterval(() => {
+        setCurrentSetIndex((prevIndex) => (prevIndex + 3) % playlistIds.length);
+      }, 5000);
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = undefined;
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = undefined;
+      }
+    };
+  }, [isCycling, playlistIds.length]);
 
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce application with user authentication, product catalog, shopping cart, and payment integration.",
-      technologies: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Stripe'],
-      link: "#", // Replace with actual project link
+      title: "Simple Todo App",
+      description: "A basic todo application to manage your daily tasks.",
+      technologies: ['React', 'CSS'],
+      link: "https://github.com/sachithra-228/simple-todo-app",
+      image: todoAppImage
     },
     {
       id: 2,
-      title: "Social Media Dashboard",
-      description: "A dashboard to track social media analytics and schedule posts across multiple platforms.",
-      technologies: ['Vue.js', 'Nuxt.js', 'Firebase', 'Chart.js'],
-      link: "#", // Replace with actual project link
+      title: "Quiz App",
+      description: "An interactive quiz application with multiple categories.",
+      technologies: ['React', 'TypeScript', 'API'],
+      link: "https://github.com/sachithra-228/quiz-app",
+      image: quizAppImage
     },
     {
       id: 3,
-      title: "Portfolio Website Generator",
-      description: "A tool to quickly generate a personalized portfolio website based on user input.",
-      technologies: ['React', 'Gatsby', 'GraphQL', 'Tailwind CSS'],
-      link: "#", // Replace with actual project link
+      title: "People Voting System",
+      description: "A system for casting and tracking votes for individuals.",
+      technologies: ['Node.js', 'Express', 'Database'],
+      link: "https://github.com/sachithra-228/people-voting-system",
+      image: votingSystemImage
+    },
+    {
+      id: 4,
+      title: "Finance Tracker",
+      description: "Track your income and expenses to manage personal finance.",
+      technologies: ['React', 'Node.js', 'MongoDB'],
+      link: "https://github.com/Sachithra-228/Finance_Tracker.git",
+      image: financeTrackerImage
+    },
+    {
+      id: 5,
+      title: "Woman Safety Tracker",
+      description: "A mobile application designed for woman safety.",
+      technologies: ['React Native', 'Firebase'], // Placeholder technologies
+      link: "https://www.figma.com/design/SFVaOVW0u7Ybfp2biz4lcn/2025-%E2%80%93-Lab-Exam-01?node-id=0-1&p=f&t=Vf8uLqI4xmtc6B5G-0", // Figma link provided
+      image: womanSafetyTrackerImage
+    },
+    {
+      id: 6,
+      title: "Create Music Tracker",
+      description: "An app to track and manage your music.", // Placeholder description
+      technologies: ['React', 'API'], // Placeholder technologies
+      link: "https://www.figma.com/design/12UcrchhyC2A4wfnrocb7F/labexam1?node-id=0-1&p=f&t=DpIJdnfuHObeL07G-0", // Figma link provided
+      image: musicTrackerImage
     },
   ];
 
@@ -73,9 +140,36 @@ const Home = () => {
   ];
 
   const achievements = [
-    { year: '2024', title: 'Launched Portfolio Website', description: 'Created a modern, responsive portfolio website' },
-    { year: '2023', title: 'Content Creation Milestone', description: 'Reached 10K subscribers on YouTube' },
-    { year: '2022', title: 'Open Source Contribution', description: 'Contributed to major open-source projects' },
+    {
+      year: '2026 (Planned / Goal)',
+      title: 'Creative Studio Vision',
+      description: 'Founding a collaborative platform for content creators and developers to build, learn, and grow together.',
+    },
+    {
+      year: '2025',
+      title: 'Full-Stack Leadership',
+      description: 'Led the development of end-to-end digital solutions, combining frontend creativity and backend performance for real-world clients.',
+    },
+    {
+      year: '2024',
+      title: 'Portfolio Launch & Community Growth',
+      description: 'Launched my personal portfolio website showcasing projects, achievements, and design vision. Engaged with a growing developer community across GitHub and LinkedIn.',
+    },
+    {
+      year: '2023',
+      title: 'Content Creation Milestone',
+      description: 'Reached 1K subscribers on YouTube by sharing dev tutorials, UI/UX insights, and tech reviews. Expanded reach as an announcer in live tech and cultural events.',
+    },
+    {
+      year: '2022',
+      title: 'Open Source & Collaboration',
+      description: 'Contributed to major open-source projects with a focus on accessibility and performance. Mentored junior developers via Discord and local meetups.',
+    },
+    {
+      year: '2021',
+      title: 'Learning & Exploring',
+      description: 'Built my first full-stack web app, laying the foundation for a journey into creative development. Started experimenting with YouTube videos on tech, productivity, and personal growth.',
+    },
   ];
 
   const mobileApps = [
@@ -198,8 +292,8 @@ const Home = () => {
               viewport={{ amount: 0.3 }}
               className="mt-16"
             >
-              <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">Featured Projects</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">My Projects</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 {projects.map((project, index) => (
                   <motion.div
                     key={project.id}
@@ -207,28 +301,60 @@ const Home = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
                     viewport={{ amount: 0.3 }}
-                    className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
+                    whileHover={{ 
+                      scale: 1.02,
+                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                    }}
+                    className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300"
                   >
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="bg-primary-100 dark:bg-primary-800 text-primary-800 dark:text-primary-200 text-xs font-medium px-2.5 py-0.5 rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    <div className="relative h-40">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <CodeBracketIcon className="w-12 h-12 text-white opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
                     </div>
-                    <a
-                      href={project.link}
-                      className="inline-block text-primary-600 dark:text-primary-400 hover:underline font-semibold"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Learn More &rarr;
-                    </a>
+                    <div className="p-4">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {project.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="bg-primary-100 dark:bg-primary-800 text-primary-800 dark:text-primary-200 text-xs font-medium px-2 py-1 rounded-full group-hover:bg-primary-200 dark:group-hover:bg-primary-700 transition-colors duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <a
+                        href={project.link}
+                        className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-semibold group-hover:translate-x-2 transition-all duration-300"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Project
+                        <svg
+                          className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </a>
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -397,9 +523,9 @@ const Home = () => {
                 {achievements.map((achievement, index) => (
                   <motion.div
                     key={achievement.year}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.2, duration: 0.5 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.3, duration: 0.6 }}
                     viewport={{ amount: 0.3 }}
                     className="relative pl-8 pb-8 border-l-2 border-primary-600 dark:border-primary-400"
                   >
@@ -458,24 +584,12 @@ const Home = () => {
                 viewport={{ amount: 0.3 }}
                 className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
               >
-                <UserGroupIcon className="w-12 h-12 text-primary-600 dark:text-primary-400 mb-4" />
+                <RocketLaunchIcon className="w-12 h-12 text-primary-600 dark:text-primary-400 mb-4" />
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Community</h3>
                 <p className="text-gray-600 dark:text-gray-300">
                   Building and nurturing tech communities through collaboration and mentorship.
                 </p>
               </motion.div>
-            </motion.div>
-
-            {/* Chatbot Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ amount: 0.3 }}
-              className="mt-16"
-            >
-              <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">Chat with me!</h2>
-              <Chatbot />
             </motion.div>
 
             {/* Social Media Section */}
@@ -567,16 +681,37 @@ const Home = () => {
               viewport={{ amount: 0.3 }}
             >
               <div className="container mx-auto">
-                <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">My YouTube Playlist</h2>
-                <div className="aspect-w-16 aspect-h-9 w-full max-w-4xl mx-auto">
-                  <iframe
-                    src="https://www.youtube.com/embed/videoseries?list=PLywgqKvsv_-26oxRu41Y4qY3JwOfH6S7m"
-                    title="Sachithra's YouTube Playlist"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-[600px] rounded-lg shadow-xl"
-                  ></iframe>
+                <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">My YouTube Playlists</h2>
+
+                {/* Auto-cycling Embedded Playlists (showing 3 at a time) - Click navigates to YouTube */}
+                <div className="flex justify-center space-x-6 overflow-hidden max-w-full mx-auto px-4">
+                  {[0, 1, 2].map((offset) => {
+                    const playlistIndex = (currentSetIndex + offset) % playlistIds.length;
+                    const playlistId = playlistIds[playlistIndex];
+                    // Construct the full YouTube playlist URL
+                    const youtubeUrl = `https://www.youtube.com/playlist?list=${playlistId}`;
+                    return (
+                      <motion.div
+                        key={offset}
+                        className="w-1/3 flex-shrink-0 aspect-w-16 aspect-h-9 cursor-pointer"
+                        onClick={() => window.open(youtubeUrl, '_blank')}
+                         whileHover={{ scale: 1.03 }}
+                      >
+                         {/* Added conditional rendering to handle fewer than 3 playlists gracefully if needed in the future */}
+                         {playlistId && ( // Ensure playlistId exists before rendering iframe
+                           <iframe
+                             src={`https://www.youtube.com/embed/videoseries?list=${playlistId}`}
+                             title={`YouTube Playlist ${playlistIndex + 1}`}
+                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                             allowFullScreen
+                             className="w-full h-full rounded-lg shadow-xl pointer-events-none" // Add pointer-events-none to iframe to allow click on parent div
+                           ></iframe>
+                         )}
+                      </motion.div>
+                    );
+                  })}
                 </div>
+
               </div>
             </motion.section>
 
