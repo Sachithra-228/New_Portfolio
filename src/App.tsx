@@ -10,15 +10,14 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Gallery from './pages/Gallery';
 import Achievements from './pages/Achievements';
-import bv2Video from './videos/bv2.mp4';
 
 function App() {
   return (
     <HelmetProvider>
       <ThemeProvider>
-        <Router>
+        <Router basename="/New_Portfolio">
           <div className="min-h-screen bg-white dark:bg-gray-900">
-            <BackgroundVideo videoSrc={bv2Video} />
+            <BackgroundVideo videoId="YOUR_YOUTUBE_VIDEO_ID" />
             <Navbar />
             <main className="pt-16">
               <Routes>
