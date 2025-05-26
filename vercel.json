@@ -23,7 +23,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(js|mjs)$",
+      "source": "/assets/(.*)\\.(js|mjs)$",
       "headers": [
         {
           "key": "Content-Type",
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.css$",
+      "source": "/assets/(.*)\\.css$",
       "headers": [
         {
           "key": "Content-Type",
