@@ -20,19 +20,19 @@ import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import { BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 
 // Import images
-import a1 from '../assets/a1.jpg';
-import a2 from '../assets/a2.jpg';
-import a3 from '../assets/a3.jpg';
-import a4 from '../assets/a4.jpg';
-import a5 from '../assets/a5.jpg';
-import a6 from '../assets/a6.jpg';
-import a7 from '../assets/a7.jpg';
-import a8 from '../assets/a8.jpg';
-import a9 from '../assets/a9.jpg';
-import a10 from '../assets/a10.jpg';
+import a1 from '../images/a1.jpg';
+import a2 from '../images/a2.jpg';
+import a3 from '../images/a3.jpg';
+import a4 from '../images/a4.jpg';
+import a5 from '../images/a5.jpg';
+import a6 from '../images/a6.jpg';
+import a7 from '../images/a7.jpg';
+import a8 from '../images/a8.jpg';
+import a9 from '../images/a9.jpg';
+import a10 from '../images/a10.jpg';
 
 interface BlogPost {
-  id: number;
+    id: number;
   title: string;
   slug: string;
   excerpt: string;
