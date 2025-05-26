@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -12,11 +13,13 @@ import Achievements from './pages/Achievements';
 import './App.css';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
     <HelmetProvider>
       <Router>
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-          <Navbar />
+          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
           <main className="container mx-auto px-4 py-8">
             <Routes>
               <Route path="/" element={<Home />} />

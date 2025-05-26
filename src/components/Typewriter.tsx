@@ -1,52 +1,55 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 interface TypewriterProps {
   roles: string[];
+  className?: string;
 }
 
-const Typewriter: React.FC<TypewriterProps> = ({ roles }) => {
+const Typewriter = ({ roles, className = '' }: TypewriterProps) => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
+  const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(150); // Speed in milliseconds
+  const [currentRole] = roles;
 
   useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+    if (!currentRole) return;
+
+    const typeSpeed = isDeleting ? 50 : 150;
+    const deleteSpeed = 50;
+    const pauseTime = 1000;
+
     const handleTyping = () => {
-      const currentRole = roles[currentRoleIndex];
-      const updatedText = isDeleting
-        ? currentRole.substring(0, displayedText.length - 1)
-        : currentRole.substring(0, displayedText.length + 1);
+      if (!isDeleting && currentText === currentRole) {
+        setTimeout(() => setIsDeleting(true), pauseTime);
+        return;
+      }
 
-      setDisplayedText(updatedText);
-
-      if (!isDeleting && updatedText === currentRole) {
-        // Pause at the end of the sentence
-        setTimeout(() => setIsDeleting(true), 1000); // Pause for 1 second
-      } else if (isDeleting && updatedText === '') {
-        // Move to the next role after deleting
+      if (isDeleting && currentText === '') {
         setIsDeleting(false);
-        setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+        setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+        return;
       }
 
-      // Adjust typing speed
-      if (isDeleting) {
-        setTypingSpeed(75); // Deleting faster
-      } else if (updatedText === currentRole || updatedText === '') {
-        setTypingSpeed(150); // Typing speed
-      }
+      const delta = isDeleting ? -1 : 1;
+      setCurrentText((prev) => currentRole.substring(0, prev.length + delta));
     };
 
-    const timer = setTimeout(handleTyping, typingSpeed);
-
+    const timer = setTimeout(handleTyping, isDeleting ? deleteSpeed : typeSpeed);
     return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, currentRoleIndex, roles, typingSpeed]);
+  }, [currentText, isDeleting, currentRoleIndex, roles]);
 
   return (
-    <div className="Typewriter text-primary-600 dark:text-primary-400 font-semibold h-8 flex items-center">
-      {displayedText}
-      {/* Optional blinking cursor */}
-      <span className="border-r-2 border-primary-600 dark:border-primary-400 animate-pulse ml-1 h-full inline-block"></span>
-    </div>
+    <motion.span
+      className={`inline-block ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {currentText}
+      <span className="animate-blink">|</span>
+    </motion.span>
   );
 };
 

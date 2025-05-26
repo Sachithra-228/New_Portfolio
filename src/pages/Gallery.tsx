@@ -171,6 +171,22 @@ const Gallery = () => {
     }
   };
 
+  const handlePrevious = () => {
+    if (selectedImage) {
+      const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id);
+      const previousImage = filteredImages[currentIndex - 1] || null;
+      setSelectedImage(previousImage);
+    }
+  };
+
+  const handleNext = () => {
+    if (selectedImage) {
+      const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id);
+      const nextImage = filteredImages[currentIndex + 1] || null;
+      setSelectedImage(nextImage);
+    }
+  };
+
   return (
     <div className="relative w-full min-h-screen bg-gray-50 dark:bg-gray-900">
       <Helmet>
@@ -340,24 +356,14 @@ const Gallery = () => {
 
             <button
               className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300"
-              onClick={(e) => {
-                e.stopPropagation();
-                const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id);
-                const prevIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length;
-                setSelectedImage(filteredImages[prevIndex]);
-              }}
+              onClick={handlePrevious}
             >
               <ChevronLeftIcon className="w-8 h-8" />
             </button>
 
             <button
               className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300"
-              onClick={(e) => {
-                e.stopPropagation();
-                const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id);
-                const nextIndex = (currentIndex + 1) % filteredImages.length;
-                setSelectedImage(filteredImages[nextIndex]);
-              }}
+              onClick={handleNext}
             >
               <ChevronRightIcon className="w-8 h-8" />
             </button>
