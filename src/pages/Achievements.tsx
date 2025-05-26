@@ -60,60 +60,75 @@ const Achievements = () => {
   const achievements: Achievement[] = [
     {
       id: 1,
-      title: "Academic Excellence",
-      description: "Graduated with First Class Honors in Computer Science",
-      category: "milestone",
-      date: "2023",
-      icon: "AcademicCapIcon",
+      title: "YouTube Milestone",
+      description: "Reached 5K+ subscribers on YouTube, creating tech tutorials and educational content",
+      category: "recognition",
+      date: "2024",
+      icon: "TrophyIcon",
       stats: [
-        { value: "First Class Honors", label: "Degree" },
-        { value: "2023", label: "Graduation Year" }
+        { value: "5K+", label: "Subscribers" },
+        { value: "2024", label: "Year" }
       ]
     },
     {
       id: 2,
-      title: "Hackathon Winner",
-      description: "First place in the National University Hackathon",
-      category: "award",
-      date: "2022",
-      icon: "TrophyIcon",
-      image: "/achievements/hackathon-winner.jpg"
+      title: "Content Creation",
+      description: "Successfully created and managed multiple tech-focused content series",
+      category: "recognition",
+      date: "2023",
+      icon: "StarIcon",
+      stats: [
+        { value: "Multiple", label: "Series" },
+        { value: "2023", label: "Year" }
+      ]
     },
     {
       id: 3,
-      title: "Research Publication",
-      description: "Published paper on AI in Education",
+      title: "Media Presence",
+      description: "Featured as a presenter on ThreeVision TV and Sri Lanka Broadcasting Corporation",
       category: "recognition",
-      date: "2022",
-      icon: "StarIcon",
-      image: "/achievements/research-publication.jpg"
+      date: "2023",
+      icon: "UserGroupIcon",
+      stats: [
+        { value: "TwoVision", label: "Platforms" },
+        { value: "2023", label: "Year" }
+      ]
     },
     {
       id: 4,
-      title: "Community Impact",
-      description: "Led tech workshops for 100+ students",
+      title: "Tech Education",
+      description: "Conducted workshops and training sessions for aspiring developers",
       category: "recognition",
-      date: "2021",
-      icon: "UserGroupIcon",
-      image: "/achievements/community-impact.jpg"
+      date: "2022",
+      icon: "RocketLaunchIcon",
+      stats: [
+        { value: "Workshops", label: "Sessions" },
+        { value: "2022", label: "Year" }
+      ]
     },
     {
       id: 5,
-      title: "Innovation Award",
-      description: "Recognized for developing an educational app",
-      category: "award",
-      date: "2021",
+      title: "Creative Projects",
+      description: "Developed innovative web applications and creative tools",
+      category: "recognition",
+      date: "2022",
       icon: "LightBulbIcon",
-      image: "/achievements/innovation-award.jpg"
+      stats: [
+        { value: "Innovative", label: "Projects" },
+        { value: "2022", label: "Year" }
+      ]
     },
     {
       id: 6,
-      title: "Startup Success",
-      description: "Launched a successful tech startup",
-      category: "milestone",
-      date: "2020",
-      icon: "RocketLaunchIcon",
-      image: "/achievements/startup-success.jpg"
+      title: "Community Impact",
+      description: "Built a supportive community of tech enthusiasts and learners",
+      category: "recognition",
+      date: "2021",
+      icon: "HeartIcon",
+      stats: [
+        { value: "Supportive", label: "Community" },
+        { value: "2021", label: "Year" }
+      ]
     }
   ];
 
@@ -233,17 +248,20 @@ const Achievements = () => {
     <div className="relative w-full min-h-screen bg-gray-50 dark:bg-gray-900">
       <Helmet>
         <title>Achievements - Sachithra</title>
-        <meta name="description" content="Explore my achievements, awards, and recognitions in technology and content creation." />
+        <meta name="description" content="Explore my achievements in tech, content creation, and community building." />
       </Helmet>
 
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-12">
+      <div className="w-full min-h-screen px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full"
+          className="w-full max-w-7xl mx-auto"
         >
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Achievements</h1>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Achievements & Milestones</h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-12">
+            A journey of growth, learning, and making an impact in the tech community.
+          </p>
 
           {/* Category Filter */}
           <div className="flex flex-wrap gap-4 mb-8">
@@ -269,65 +287,23 @@ const Achievements = () => {
                 key={achievement.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400">
-                      {getIcon(achievement.icon)}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                        {achievement.title}
-                      </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {achievement.date}
-                      </p>
-                    </div>
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-primary-100 dark:bg-primary-900 rounded-lg">
+                    {getIcon(achievement.icon)}
                   </div>
-
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {achievement.description}
-                  </p>
-
-                  {achievement.stats && (
-                    <div className="grid grid-cols-3 gap-4 mb-4">
-                      {achievement.stats.map((stat, i) => (
-                        <div key={i} className="text-center">
-                          <p className="text-lg font-semibold text-primary-600 dark:text-primary-400">
-                            {stat.value}
-                          </p>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">
-                            {stat.label}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {achievement.image && (
-                    <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
-                      <img
-                        src={achievement.image}
-                        alt={achievement.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )}
-
-                  {achievement.link && (
-                    <a
-                      href={achievement.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300"
-                    >
-                      View Details
-                      <ArrowTrendingUpIcon className="w-4 h-4 ml-1" />
-                    </a>
-                  )}
+                  <span className="ml-4 text-sm font-medium text-primary-600 dark:text-primary-400">
+                    {achievement.date}
+                  </span>
                 </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  {achievement.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {achievement.description}
+                </p>
               </motion.div>
             ))}
           </div>
