@@ -17,7 +17,6 @@ import lakshapathi2Image from '../images/lakshapathi2.png';
 
 import CodingStats from '../components/CodingStats';
 import InteractiveMap from '../components/InteractiveMap';
-import QnA from '../components/QnA';
 
 const About = () => {
   const timeline = [
@@ -368,7 +367,6 @@ const About = () => {
           <div className="space-y-12 mt-12">
             <CodingStats />
             <InteractiveMap />
-            <QnA />
           </div>
         </motion.div>
       </div>
