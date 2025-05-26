@@ -48,202 +48,202 @@ const Blog = () => {
   const [expandedPost, setExpandedPost] = useState<number | null>(null);
   const [sortBy, setSortBy] = useState<'newest' | 'popular'>('newest');
 
-  const posts: BlogPost[] = [
+  const blogPosts: BlogPost[] = [
     {
       id: 1,
-      title: "Getting Started with React and TypeScript",
-      slug: "getting-started-with-react-typescript",
-      excerpt: "Learn how to set up a modern React project with TypeScript and best practices for type safety.",
-      content: "Full content here...",
+      title: "Getting Started with React Development",
+      slug: "getting-started-with-react-development",
+      excerpt: "Learn the fundamentals of React and start building modern web applications.",
+      content: "React has revolutionized web development with its component-based architecture...",
       author: {
         name: "Sachithra",
         avatar: "/avatar.jpg",
         bio: "Full Stack Developer & Content Creator"
       },
-      category: "development",
-      tags: ["react", "typescript", "web development"],
-      date: "2024-01-15",
+      date: "2024-03-15",
       readTime: "5 min read",
-      image: "/blog/react-typescript.jpg",
+      category: "Web Development",
+      tags: ["React", "JavaScript", "Web Development"],
+      image: "/images/a1.jpg",
       likes: 42,
-      comments: 12
-    },
-    {
-      id: 2,
-      title: "Building Responsive UIs with Tailwind CSS",
-      slug: "responsive-uis-tailwind-css",
-      excerpt: "A comprehensive guide to creating beautiful, responsive user interfaces using Tailwind CSS.",
-      content: "Full content here...",
-      author: {
-        name: "Sachithra",
-        avatar: "/avatar.jpg",
-        bio: "Full Stack Developer & Content Creator"
-      },
-      category: "design",
-      tags: ["tailwind", "css", "responsive design"],
-      date: "2024-01-10",
-      readTime: "8 min read",
-      image: "/blog/tailwind-css.jpg",
-      likes: 38,
       comments: 8
     },
     {
-      id: 3,
-      title: "The Future of Web Development",
-      slug: "future-web-development",
-      excerpt: "Exploring upcoming trends and technologies that will shape the future of web development.",
-      content: "Full content here...",
+      id: 2,
+      title: "Mastering TypeScript for Better Code",
+      slug: "mastering-typescript-for-better-code",
+      excerpt: "Discover how TypeScript can improve your development workflow and code quality.",
+      content: "TypeScript adds static typing to JavaScript, making your code more robust...",
       author: {
         name: "Sachithra",
         avatar: "/avatar.jpg",
         bio: "Full Stack Developer & Content Creator"
       },
-      category: "technology",
-      tags: ["web development", "future tech", "trends"],
-      date: "2024-01-05",
+      date: "2024-03-10",
+      readTime: "7 min read",
+      category: "Programming",
+      tags: ["TypeScript", "JavaScript", "Programming"],
+      image: "/images/a2.jpg",
+      likes: 38,
+      comments: 12
+    },
+    {
+      id: 3,
+      title: "Building Responsive UIs with Tailwind CSS",
+      slug: "building-responsive-uis-with-tailwind-css",
+      excerpt: "Create beautiful and responsive user interfaces using Tailwind CSS.",
+      content: "Tailwind CSS provides a utility-first approach to styling...",
+      author: {
+        name: "Sachithra",
+        avatar: "/avatar.jpg",
+        bio: "Full Stack Developer & Content Creator"
+      },
+      date: "2024-03-05",
       readTime: "6 min read",
-      image: "/blog/future-web.jpg",
-      likes: 56,
+      category: "CSS",
+      tags: ["Tailwind CSS", "CSS", "Web Design"],
+      image: "/images/a3.jpg",
+      likes: 45,
       comments: 15
     },
     {
       id: 4,
-      title: "Mastering Next.js 14: A Complete Guide",
-      slug: "mastering-nextjs-14",
-      excerpt: "Deep dive into Next.js 14 features, including Server Components, App Router, and advanced routing patterns.",
-      content: "Full content here...",
+      title: "The Future of Web Development",
+      slug: "future-of-web-development",
+      excerpt: "Explore upcoming trends and technologies in web development.",
+      content: "Web development is constantly evolving with new frameworks and tools...",
       author: {
         name: "Sachithra",
         avatar: "/avatar.jpg",
         bio: "Full Stack Developer & Content Creator"
       },
-      category: "development",
-      tags: ["nextjs", "react", "server components"],
-      date: "2024-01-20",
-      readTime: "12 min read",
-      image: "/blog/nextjs.jpg",
-      likes: 78,
-      comments: 23
+      date: "2024-02-28",
+      readTime: "8 min read",
+      category: "Technology",
+      tags: ["Web Development", "Technology", "Future"],
+      image: "/images/a4.jpg",
+      likes: 52,
+      comments: 20
     },
     {
       id: 5,
-      title: "UI/UX Design Principles for Developers",
-      slug: "ui-ux-design-principles",
-      excerpt: "Essential design principles every developer should know to create better user experiences.",
-      content: "Full content here...",
+      title: "Optimizing React Performance",
+      slug: "optimizing-react-performance",
+      excerpt: "Learn techniques to improve the performance of your React applications.",
+      content: "Performance optimization is crucial for delivering a great user experience...",
       author: {
         name: "Sachithra",
         avatar: "/avatar.jpg",
         bio: "Full Stack Developer & Content Creator"
       },
-      category: "design",
-      tags: ["ui", "ux", "design principles"],
-      date: "2024-01-18",
-      readTime: "7 min read",
-      image: "/blog/ui-ux.jpg",
-      likes: 45,
-      comments: 9
-    },
-    {
-      id: 6,
-      title: "Building RESTful APIs with Node.js and Express",
-      slug: "restful-apis-nodejs-express",
-      excerpt: "Learn how to create robust and scalable RESTful APIs using Node.js and Express framework.",
-      content: "Full content here...",
-      author: {
-        name: "Sachithra",
-        avatar: "/avatar.jpg",
-        bio: "Full Stack Developer & Content Creator"
-      },
-      category: "development",
-      tags: ["nodejs", "express", "api", "backend"],
-      date: "2024-01-16",
-      readTime: "10 min read",
-      image: "/blog/nodejs.jpg",
-      likes: 62,
+      date: "2024-02-20",
+      readTime: "9 min read",
+      category: "Web Development",
+      tags: ["React", "Performance", "Optimization"],
+      image: "/images/a5.jpg",
+      likes: 48,
       comments: 18
     },
     {
-      id: 7,
-      title: "The Rise of AI in Web Development",
-      slug: "ai-web-development",
-      excerpt: "How artificial intelligence is transforming the way we build and maintain web applications.",
-      content: "Full content here...",
+      id: 6,
+      title: "State Management in React",
+      slug: "state-management-in-react",
+      excerpt: "Understanding different state management solutions in React.",
+      content: "Choosing the right state management solution is crucial for your application...",
       author: {
         name: "Sachithra",
         avatar: "/avatar.jpg",
         bio: "Full Stack Developer & Content Creator"
       },
-      category: "technology",
-      tags: ["ai", "machine learning", "web development"],
-      date: "2024-01-14",
-      readTime: "9 min read",
-      image: "/blog/ai-web.jpg",
-      likes: 89,
-      comments: 27
-    },
-    {
-      id: 8,
-      title: "Optimizing React Performance",
-      slug: "optimizing-react-performance",
-      excerpt: "Advanced techniques and best practices for improving React application performance.",
-      content: "Full content here...",
-      author: {
-        name: "Sachithra",
-        avatar: "/avatar.jpg",
-        bio: "Full Stack Developer & Content Creator"
-      },
-      category: "development",
-      tags: ["react", "performance", "optimization"],
-      date: "2024-01-12",
-      readTime: "11 min read",
-      image: "/blog/react-performance.jpg",
-      likes: 71,
+      date: "2024-02-15",
+      readTime: "7 min read",
+      category: "Web Development",
+      tags: ["React", "State Management", "Redux"],
+      image: "/images/a6.jpg",
+      likes: 41,
       comments: 14
     },
     {
-      id: 9,
+      id: 7,
       title: "Modern CSS Techniques",
       slug: "modern-css-techniques",
-      excerpt: "Exploring modern CSS features and techniques for creating stunning web designs.",
-      content: "Full content here...",
+      excerpt: "Explore modern CSS features and best practices.",
+      content: "CSS has evolved significantly with new features and capabilities...",
       author: {
         name: "Sachithra",
         avatar: "/avatar.jpg",
         bio: "Full Stack Developer & Content Creator"
       },
-      category: "design",
-      tags: ["css", "web design", "frontend"],
-      date: "2024-01-10",
-      readTime: "8 min read",
-      image: "/blog/modern-css.jpg",
-      likes: 53,
+      date: "2024-02-10",
+      readTime: "6 min read",
+      category: "CSS",
+      tags: ["CSS", "Web Design", "Styling"],
+      image: "/images/a7.jpg",
+      likes: 36,
       comments: 11
     },
     {
-      id: 10,
-      title: "Web Security Best Practices",
-      slug: "web-security-best-practices",
-      excerpt: "Essential security practices every web developer should implement to protect their applications.",
-      content: "Full content here...",
+      id: 8,
+      title: "Building RESTful APIs",
+      slug: "building-restful-apis",
+      excerpt: "Learn how to design and implement RESTful APIs.",
+      content: "RESTful APIs are essential for modern web applications...",
       author: {
         name: "Sachithra",
         avatar: "/avatar.jpg",
         bio: "Full Stack Developer & Content Creator"
       },
-      category: "technology",
-      tags: ["security", "web development", "best practices"],
-      date: "2024-01-08",
-      readTime: "10 min read",
-      image: "/blog/web-security.jpg",
-      likes: 67,
+      date: "2024-02-05",
+      readTime: "8 min read",
+      category: "Backend",
+      tags: ["API", "Backend", "REST"],
+      image: "/images/a8.jpg",
+      likes: 44,
+      comments: 16
+    },
+    {
+      id: 9,
+      title: "Testing React Applications",
+      slug: "testing-react-applications",
+      excerpt: "Best practices for testing React components and applications.",
+      content: "Testing is crucial for maintaining code quality and reliability...",
+      author: {
+        name: "Sachithra",
+        avatar: "/avatar.jpg",
+        bio: "Full Stack Developer & Content Creator"
+      },
+      date: "2024-01-30",
+      readTime: "7 min read",
+      category: "Testing",
+      tags: ["React", "Testing", "Jest"],
+      image: "/images/a9.jpg",
+      likes: 39,
+      comments: 13
+    },
+    {
+      id: 10,
+      title: "Deploying Web Applications",
+      slug: "deploying-web-applications",
+      excerpt: "A guide to deploying your web applications to production.",
+      content: "Deployment is the final step in bringing your application to users...",
+      author: {
+        name: "Sachithra",
+        avatar: "/avatar.jpg",
+        bio: "Full Stack Developer & Content Creator"
+      },
+      date: "2024-01-25",
+      readTime: "6 min read",
+      category: "DevOps",
+      tags: ["Deployment", "DevOps", "Hosting"],
+      image: "/images/a10.jpg",
+      likes: 47,
       comments: 19
     }
   ];
 
   const categories = ['all', 'development', 'design', 'technology'];
 
-  const filteredPosts = posts
+  const filteredPosts = blogPosts
     .filter(post => 
       (selectedCategory === 'all' || post.category === selectedCategory) &&
       (searchQuery === '' || 
@@ -346,219 +346,73 @@ const Blog = () => {
           </div>
 
           {/* Blog Posts Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-8">
-            {filteredPosts.map((post, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPosts.map((post) => (
               <motion.article
                 key={post.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                  className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+                transition={{ duration: 0.5 }}
+                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-200"
               >
-                  <div className="relative aspect-video">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                      className="w-full h-full object-cover"
-                />
+                <div className="relative aspect-video">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <button
+                      onClick={() => toggleLike(post.id)}
+                      className="p-2 bg-white dark:bg-gray-800 rounded-full shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                    >
+                      <HeartIcon className={`w-5 h-5 ${
+                        likedPosts.includes(post.id) ? 'text-red-500 fill-current' : 'text-gray-400'
+                      }`} />
+                    </button>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-2 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400">
+                      <UserIcon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-900 dark:text-white">{post.author.name}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{post.date}</p>
+                    </div>
                   </div>
 
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <img
-                        src={post.author.avatar}
-                        alt={post.author.name}
-                        className="w-10 h-10 rounded-full"
-                      />
-                      <div>
-                        <p className="text-sm font-medium text-gray-900 dark:text-white">
-                          {post.author.name}
-                        </p>
-                        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                          <ClockIcon className="w-4 h-4" />
-                          <span>{post.readTime}</span>
-                          <span>•</span>
-                          <span>{new Date(post.date).toLocaleDateString()}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     {post.title}
                   </h2>
-
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
                     {post.excerpt}
                   </p>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {post.readTime}
+                      </span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {post.likes} likes
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
                           className="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded-full"
                         >
-                          #{tag}
+                          {tag}
                         </span>
                       ))}
                     </div>
-
-                  <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <button
-                          onClick={() => toggleLike(post.id)}
-                          className="flex items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
-                        >
-                          {likedPosts.includes(post.id) ? (
-                            <HeartIconSolid className="w-5 h-5 text-red-500" />
-                          ) : (
-                            <HeartIcon className="w-5 h-5" />
-                          )}
-                          <span>{post.likes}</span>
-                        </button>
-                        <button
-                          onClick={() => setExpandedPost(post.id)}
-                          className="flex items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
-                        >
-                          <ChatBubbleLeftIcon className="w-5 h-5" />
-                          <span>{post.comments}</span>
-                        </button>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => toggleSave(post.id)}
-                          className="p-2 text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
-                        >
-                          {savedPosts.includes(post.id) ? (
-                            <BookmarkIconSolid className="w-5 h-5" />
-                          ) : (
-                            <BookmarkIcon className="w-5 h-5" />
-                          )}
-                        </button>
-                        <button
-                          onClick={() => sharePost(post)}
-                          className="p-2 text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
-                        >
-                          <ShareIcon className="w-5 h-5" />
-                        </button>
-                      </div>
-                    </div>
-
-                    <AnimatePresence>
-                      {expandedPost === post.id && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700"
-                    >
-                          <div className="prose dark:prose-invert max-w-none">
-                            {post.content}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-8">
-              {/* Author Bio */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src="/avatar.jpg"
-                    alt="Sachithra"
-                    className="w-16 h-16 rounded-full"
-                  />
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      Sachithra
-                    </h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Full Stack Developer & Content Creator
-                    </p>
                   </div>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Passionate about web development, design, and sharing knowledge through writing and content creation.
-                </p>
-                <button className="w-full px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200">
-                  Follow
-                </button>
-              </div>
-
-              {/* Categories */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Categories
-                </h3>
-                <div className="space-y-2">
-                  {categories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setSelectedCategory(category)}
-                      className={`w-full flex items-center justify-between px-4 py-2 rounded-lg transition-colors duration-200 ${
-                        selectedCategory === category
-                          ? 'bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400'
-                          : 'hover:bg-gray-100 dark:hover:bg-gray-700'
-                      }`}
-                    >
-                      <span className="capitalize">{category}</span>
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {posts.filter(post => category === 'all' || post.category === category).length}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Popular Tags */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Popular Tags
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {Array.from(new Set(posts.flatMap(post => post.tags))).map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => setSearchQuery(tag)}
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
-                    >
-                      #{tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Newsletter */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Subscribe to Newsletter
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Get the latest articles and news delivered to your inbox.
-                </p>
-                <form className="space-y-4">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  />
-                  <button
-                    type="submit"
-                    className="w-full px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              </div>
-            </div>
+              </motion.article>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -585,19 +439,19 @@ const Blog = () => {
               </h3>
               <div className="flex gap-4">
                 <button
-                  onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(posts.find(p => p.id === showShareModal)?.title || '')}&url=${encodeURIComponent(`https://yourdomain.com/blog/${posts.find(p => p.id === showShareModal)?.slug || ''}`)}`)}
+                  onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogPosts.find(p => p.id === showShareModal)?.title || '')}&url=${encodeURIComponent(`https://yourdomain.com/blog/${blogPosts.find(p => p.id === showShareModal)?.slug || ''}`)}`)}
                   className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200"
                 >
                   Twitter
                 </button>
                 <button
-                  onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://yourdomain.com/blog/${posts.find(p => p.id === showShareModal)?.slug || ''}`)}`)}
+                  onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://yourdomain.com/blog/${blogPosts.find(p => p.id === showShareModal)?.slug || ''}`)}`)}
                   className="flex-1 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors duration-200"
                 >
                   LinkedIn
                 </button>
                 <button
-                  onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://yourdomain.com/blog/${posts.find(p => p.id === showShareModal)?.slug || ''}`)}`)}
+                  onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://yourdomain.com/blog/${blogPosts.find(p => p.id === showShareModal)?.slug || ''}`)}`)}
                   className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
                 >
                   Facebook
