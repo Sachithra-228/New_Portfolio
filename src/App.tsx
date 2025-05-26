@@ -1,38 +1,47 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { ThemeProvider } from './contexts/ThemeContext';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
-import BackgroundVideo from './components/BackgroundVideo';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
+import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
-import Gallery from './pages/Gallery';
 import Achievements from './pages/Achievements';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   return (
     <HelmetProvider>
-      <ThemeProvider>
-        <Router basename="/New_Portfolio">
-          <div className="min-h-screen bg-white dark:bg-gray-900">
-            <BackgroundVideo videoId="YOUR_YOUTUBE_VIDEO_ID" />
-            <Navbar />
-            <main className="pt-16">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/achievements" element={<Achievements />} />
-              </Routes>
-            </main>
-          </div>
-        </Router>
-      </ThemeProvider>
+      <Router basename="/New_Portfolio"> {/* 👈 Set your repo name here */}
+        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200">
+          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <main className="container mx-auto px-4 py-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/achievements" element={<Achievements />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
     </HelmetProvider>
   );
 }

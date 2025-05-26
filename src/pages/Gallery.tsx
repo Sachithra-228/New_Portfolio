@@ -178,12 +178,12 @@ const Gallery = () => {
         <meta name="description" content="Explore my photo gallery featuring school events, architecture, and campus life." />
       </Helmet>
 
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-12">
+      <div className="w-full min-h-screen px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full"
+          className="w-full max-w-7xl mx-auto"
         >
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Photo Gallery</h1>
 
@@ -200,7 +200,7 @@ const Gallery = () => {
               <MagnifyingGlassIcon className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as 'newest' | 'likes')}
@@ -210,7 +210,7 @@ const Gallery = () => {
                 <option value="likes">Most Liked</option>
               </select>
 
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -229,14 +229,14 @@ const Gallery = () => {
           </div>
 
           {/* Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredImages.map((image, index) => (
               <motion.div
                 key={image.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg"
+                className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg h-full"
               >
                 <div className="relative aspect-square">
                   <img
@@ -385,7 +385,7 @@ const Gallery = () => {
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 Share Image
               </h3>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 <button
                   onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(selectedImage?.alt || '')}&url=${encodeURIComponent(selectedImage?.src || '')}`)}
                   className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200"

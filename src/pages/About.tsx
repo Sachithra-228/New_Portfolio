@@ -49,7 +49,7 @@ const About = () => {
   ];
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full min-h-screen">
       <Helmet>
         <title>About Me - Sachithra</title>
         <meta name="description" content="Learn more about my journey as a developer and content creator." />
@@ -65,11 +65,12 @@ const About = () => {
         <source src={bv2Video} type="video/mp4" />
       </video>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="relative z-10 w-full min-h-screen px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="w-full max-w-7xl mx-auto"
         >
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">✨ My Story</h1>
           
@@ -100,7 +101,7 @@ const About = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="relative rounded-xl overflow-hidden shadow-lg group"
+                  className="relative rounded-xl overflow-hidden shadow-lg group h-full"
                 >
                   <img 
                     src={schoolImage} 
@@ -112,7 +113,7 @@ const About = () => {
 
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="relative rounded-xl overflow-hidden shadow-lg group"
+                  className="relative rounded-xl overflow-hidden shadow-lg group h-full"
                 >
                   <img 
                     src={school1Image} 
@@ -124,7 +125,7 @@ const About = () => {
 
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="relative rounded-xl overflow-hidden shadow-lg group"
+                  className="relative rounded-xl overflow-hidden shadow-lg group h-full"
                 >
                   <img 
                     src={school2Image} 
@@ -145,7 +146,7 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="relative rounded-xl overflow-hidden shadow-lg group"
+                className="relative rounded-xl overflow-hidden shadow-lg group h-full"
               >
                 <img 
                   src={library1Image} 
@@ -157,7 +158,7 @@ const About = () => {
 
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="relative rounded-xl overflow-hidden shadow-lg group"
+                className="relative rounded-xl overflow-hidden shadow-lg group h-full"
               >
                 <img 
                   src={library2Image} 
@@ -169,7 +170,7 @@ const About = () => {
 
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="relative rounded-xl overflow-hidden shadow-lg group"
+                className="relative rounded-xl overflow-hidden shadow-lg group h-full"
               >
                 <img 
                   src={library3Image} 
@@ -207,7 +208,7 @@ const About = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="relative rounded-xl overflow-hidden shadow-lg group"
+                  className="relative rounded-xl overflow-hidden shadow-lg group h-full"
                 >
                   <img 
                     src={lakshapathi1Image} 
@@ -219,7 +220,7 @@ const About = () => {
 
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="relative rounded-xl overflow-hidden shadow-lg group"
+                  className="relative rounded-xl overflow-hidden shadow-lg group h-full"
                 >
                   <img 
                     src={lakshapathi2Image} 
@@ -245,33 +246,7 @@ const About = () => {
 
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">🕒 Timeline</h2>
           <div className="space-y-8">
-            {[
-              {
-                year: '2024',
-                title: 'Senior Developer',
-                description: 'Leading development teams, mentoring junior developers, and building innovative web solutions.',
-              },
-              {
-                year: '2023',
-                title: 'Milestone Content Creator',
-                description: 'Reached 5K+ views and growing audience on YouTube. Focused on accessible tech education and creative tutorials.',
-              },
-              {
-                year: '2022',
-                title: 'TV & Radio Presenter',
-                description: 'Worked with ThreeVision TV and Sri Lanka Broadcasting Corporation as a presenter, blending communication with tech passion.',
-              },
-              {
-                year: '2020',
-                title: 'Full Stack Developer',
-                description: 'Started working on complete web applications using modern frontend and backend stacks.',
-              },
-              {
-                year: '2018',
-                title: 'Started Coding Journey',
-                description: 'Began learning programming during school while completing A/Ls in the Bio Stream at Dharmapala Vidyalaya, Pannipitiya.',
-              },
-            ].map((item, index) => (
+            {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
                 initial={{ opacity: 0, y: 30 }}
@@ -294,7 +269,7 @@ const About = () => {
             ))}
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">🎓 Education</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 mt-12">🎓 Education</h2>
           <div className="space-y-8">
             {[
               {
