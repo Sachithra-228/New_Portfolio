@@ -23,7 +23,7 @@
       ]
     },
     {
-      "source": "/(.*).js",
+      "source": "/(.*)\\.(js|mjs)$",
       "headers": [
         {
           "key": "Content-Type",
@@ -32,11 +32,11 @@
       ]
     },
     {
-      "source": "/(.*).mjs",
+      "source": "/(.*)\\.css$",
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/javascript"
+          "value": "text/css"
         }
       ]
     }
