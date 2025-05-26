@@ -8,7 +8,10 @@ import {
   RocketLaunchIcon,
   ArrowLeftIcon,
   XMarkIcon,
+  ArrowRightIcon,
 } from '@heroicons/react/24/outline';
+import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
+import { useInView } from 'framer-motion';
 
 import profileImage from '../images/s.jpg';
 import flashImage from '../images/flash.jpg';
@@ -33,7 +36,7 @@ const Home = () => {
   const [selectedApp, setSelectedApp] = useState<number | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<{ src: string; title: string } | null>(null);
   const [currentSetIndex, setCurrentSetIndex] = useState(0);
-  const [isCycling, setIsCycling] = useState(true);
+  const [isCycling] = useState(true);
 
   const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
 

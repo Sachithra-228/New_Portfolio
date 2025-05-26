@@ -6,7 +6,25 @@ import {
   ShareIcon, 
   EnvelopeIcon,
   ChevronDownIcon,
-  ChevronUpIcon
+  ChevronUpIcon,
+  GlobeAltIcon,
+  DevicePhoneMobileIcon,
+  ServerIcon,
+  CommandLineIcon,
+  CubeIcon,
+  ShieldCheckIcon,
+  ChartBarIcon,
+  BeakerIcon,
+  CloudIcon,
+  CpuChipIcon,
+  CubeTransparentIcon,
+  DocumentTextIcon,
+  FingerPrintIcon,
+  KeyIcon,
+  LockClosedIcon,
+  PresentationChartLineIcon,
+  PuzzlePieceIcon,
+  WrenchScrewdriverIcon
 } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 

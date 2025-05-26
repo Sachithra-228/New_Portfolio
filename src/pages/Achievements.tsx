@@ -1,24 +1,31 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { 
-  TrophyIcon,
+import {
   AcademicCapIcon,
+  TrophyIcon,
   StarIcon,
-  BriefcaseIcon,
-  UserGroupIcon,
-  ChartBarIcon,
-  GlobeAltIcon,
   HeartIcon,
-  ArrowTrendingUpIcon,
   SparklesIcon,
+  RocketLaunchIcon,
+  LightBulbIcon,
+  FireIcon,
+  BoltIcon,
+  GlobeAltIcon,
+  UserGroupIcon,
   BookOpenIcon,
+  PresentationChartLineIcon,
   CodeBracketIcon,
-  BriefcaseIcon as BriefcaseIconOutline,
-  DocumentTextIcon,
+  CommandLineIcon,
+  BeakerIcon,
+  ChartBarIcon,
+  PuzzlePieceIcon,
+  WrenchScrewdriverIcon,
+  CpuChipIcon,
+  ArrowTrendingUpIcon,
   ArrowRightIcon
 } from '@heroicons/react/24/outline';
-import { StarIcon as StarIconSolid } from '@heroicons/react/24/solid';
+import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 
 interface Achievement {
   id: number;
@@ -53,69 +60,60 @@ const Achievements = () => {
   const achievements: Achievement[] = [
     {
       id: 1,
-      title: "YouTube Growth Recognition",
-      description: "Reached significant milestone in content reach and engagement, growing to 5K+ subscribers and maintaining consistent viewership.",
+      title: "Academic Excellence",
+      description: "Graduated with First Class Honors in Computer Science",
       category: "milestone",
       date: "2023",
-      icon: "TrophyIcon",
+      icon: "AcademicCapIcon",
       stats: [
-        { value: "5K+", label: "Subscribers" },
-        { value: "100K+", label: "Total Views" },
-        { value: "95%", label: "Engagement Rate" }
+        { value: "First Class Honors", label: "Degree" },
+        { value: "2023", label: "Graduation Year" }
       ]
     },
     {
       id: 2,
-      title: "Best Radio Presenter (SLBC)",
-      description: "Recognized for clear, impactful communication and tech-focused sessions at Sri Lanka Broadcasting Corporation.",
+      title: "Hackathon Winner",
+      description: "First place in the National University Hackathon",
       category: "award",
       date: "2022",
-      icon: "StarIcon",
-      image: "/achievements/radio-award.jpg"
+      icon: "TrophyIcon",
+      image: "/achievements/hackathon-winner.jpg"
     },
     {
       id: 3,
-      title: "Open Source Contributor Badge",
-      description: "Contributed to public repositories and supported beginner-friendly projects, helping the developer community grow.",
+      title: "Research Publication",
+      description: "Published paper on AI in Education",
       category: "recognition",
-      date: "2021",
-      icon: "HeartIcon",
-      link: "https://github.com/yourusername"
+      date: "2022",
+      icon: "StarIcon",
+      image: "/achievements/research-publication.jpg"
     },
     {
       id: 4,
-      title: "Full Stack Development Certification",
-      description: "Completed comprehensive training in modern web development technologies and best practices.",
-      category: "certification",
-      date: "2020",
-      icon: "AcademicCapIcon",
-      stats: [
-        { value: "6", label: "Months Duration" },
-        { value: "12", label: "Projects Completed" },
-        { value: "A+", label: "Final Grade" }
-      ]
+      title: "Community Impact",
+      description: "Led tech workshops for 100+ students",
+      category: "recognition",
+      date: "2021",
+      icon: "UserGroupIcon",
+      image: "/achievements/community-impact.jpg"
     },
     {
       id: 5,
-      title: "Tech Community Leadership",
-      description: "Led and organized multiple tech meetups and workshops, fostering learning and collaboration.",
-      category: "recognition",
-      date: "2023",
-      icon: "UserGroupIcon",
-      stats: [
-        { value: "10+", label: "Events Organized" },
-        { value: "500+", label: "Participants" },
-        { value: "4.8", label: "Average Rating" }
-      ]
+      title: "Innovation Award",
+      description: "Recognized for developing an educational app",
+      category: "award",
+      date: "2021",
+      icon: "LightBulbIcon",
+      image: "/achievements/innovation-award.jpg"
     },
     {
       id: 6,
-      title: "Innovation Award",
-      description: "Recognized for developing innovative solutions in web development and content creation.",
-      category: "award",
-      date: "2022",
-      icon: "SparklesIcon",
-      image: "/achievements/innovation-award.jpg"
+      title: "Startup Success",
+      description: "Launched a successful tech startup",
+      category: "milestone",
+      date: "2020",
+      icon: "RocketLaunchIcon",
+      image: "/achievements/startup-success.jpg"
     }
   ];
 
@@ -145,7 +143,7 @@ const Achievements = () => {
       title: "Resume Building Workshop",
       description: "Learn how to create a standout resume that gets you noticed by top tech companies.",
       category: "career",
-      icon: "DocumentTextIcon",
+      icon: "PresentationChartLineIcon",
       link: "https://www.linkedin.com/learning/resume-writing",
       provider: "LinkedIn Learning",
       tags: ["Career", "Resume", "Workshop"]
@@ -209,6 +207,8 @@ const Achievements = () => {
         return <UserGroupIcon className="w-6 h-6" />;
       case 'SparklesIcon':
         return <SparklesIcon className="w-6 h-6" />;
+      case 'LightBulbIcon':
+        return <LightBulbIcon className="w-6 h-6" />;
       default:
         return <TrophyIcon className="w-6 h-6" />;
     }
@@ -220,8 +220,8 @@ const Achievements = () => {
         return <BookOpenIcon className="w-6 h-6" />;
       case 'CodeBracketIcon':
         return <CodeBracketIcon className="w-6 h-6" />;
-      case 'DocumentTextIcon':
-        return <DocumentTextIcon className="w-6 h-6" />;
+      case 'PresentationChartLineIcon':
+        return <PresentationChartLineIcon className="w-6 h-6" />;
       case 'AcademicCapIcon':
         return <AcademicCapIcon className="w-6 h-6" />;
       default:
@@ -276,7 +276,7 @@ const Achievements = () => {
                   <div className="flex items-center gap-4 mb-4">
                     <div className="p-3 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400">
                       {getIcon(achievement.icon)}
-                  </div>
+                    </div>
                     <div>
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                         {achievement.title}
@@ -288,8 +288,8 @@ const Achievements = () => {
                   </div>
 
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-                      {achievement.description}
-                    </p>
+                    {achievement.description}
+                  </p>
 
                   {achievement.stats && (
                     <div className="grid grid-cols-3 gap-4 mb-4">
@@ -306,15 +306,15 @@ const Achievements = () => {
                     </div>
                   )}
 
-                    {achievement.image && (
+                  {achievement.image && (
                     <div className="relative aspect-video mb-4 rounded-lg overflow-hidden">
-                        <img
-                          src={achievement.image}
-                          alt={achievement.title}
+                      <img
+                        src={achievement.image}
+                        alt={achievement.title}
                         className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
+                      />
+                    </div>
+                  )}
 
                   {achievement.link && (
                     <a
@@ -342,7 +342,7 @@ const Achievements = () => {
             >
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 Ready to Start Your Journey?
-            </h2>
+              </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                 Explore these carefully curated resources to kickstart your career in technology and development.
               </p>
@@ -417,7 +417,7 @@ const Achievements = () => {
                        'Get Certified'}
                       <ArrowRightIcon className="w-4 h-4 ml-2" />
                     </a>
-                </div>
+                  </div>
                 </motion.div>
               ))}
             </div>

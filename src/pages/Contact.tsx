@@ -6,7 +6,7 @@ import {
   PhoneIcon,
   MapPinIcon,
   GlobeAltIcon,
-  ChatBubbleLeftRightIcon,
+  ChatBubbleLeftIcon,
   PaperAirplaneIcon,
   CheckCircleIcon,
   XCircleIcon
@@ -143,7 +143,7 @@ const Contact = () => {
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-primary-100 dark:bg-primary-900 rounded-lg text-primary-600 dark:text-primary-400">
-                  <ChatBubbleLeftRightIcon className="w-6 h-6" />
+                  <ChatBubbleLeftIcon className="w-6 h-6" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">

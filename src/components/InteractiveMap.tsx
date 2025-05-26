@@ -1,89 +1,72 @@
 import { motion } from 'framer-motion';
-// @ts-ignore
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import { Tooltip } from 'react-tooltip';
 
-const geoUrl =
-  'https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json';
+const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
-// Placeholder data - replace with your actual locations
 const locations = [
-  { name: 'Remote Team Location A', coordinates: [-74.0060, 40.7128] as [number, number], description: 'Worked with team in 20XX' },
-  { name: 'Workshop City B', coordinates: [2.3522, 48.8566] as [number, number], description: 'Conducted workshop on YYYY' },
-  { name: 'Event Location C', coordinates: [139.6917, 35.6895] as [number, number], description: 'Attended event in ZZZZ' },
+  { name: "Sri Lanka", coordinates: [80.7718, 7.8731] as [number, number] },
+  { name: "United States", coordinates: [-95.7129, 37.0902] as [number, number] },
+  { name: "United Kingdom", coordinates: [-3.4360, 55.3781] as [number, number] },
+  { name: "Australia", coordinates: [133.7751, -25.2744] as [number, number] },
+  { name: "Canada", coordinates: [-106.3468, 56.1304] as [number, number] },
+  { name: "Germany", coordinates: [10.4515, 51.1657] as [number, number] },
+  { name: "France", coordinates: [2.2137, 46.2276] as [number, number] },
+  { name: "Japan", coordinates: [138.2529, 36.2048] as [number, number] },
+  { name: "India", coordinates: [78.9629, 20.5937] as [number, number] },
+  { name: "Brazil", coordinates: [-51.9253, -14.2350] as [number, number] }
 ];
-
-interface GeographyProps {
-  rsmKey: string;
-  properties: any;
-}
-
-interface MarkerProps {
-  coordinates: [number, number];
-}
 
 const InteractiveMap = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      viewport={{ amount: 0.3 }}
-      className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center"
+      className="w-full h-[400px] bg-white rounded-lg shadow-lg overflow-hidden"
     >
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">🌍 Interactive World Map</h2>
-      <div className="flex justify-center">
-        <ComposableMap
-          projectionConfig={{
-            rotate: [-10, 0, 0],
-            scale: 140
-          }}
-          width={800}
-          height={400}
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
-        >
-          <Geographies geography={geoUrl}>
-            {({ geographies }: { geographies: GeographyProps[] }) =>
-              geographies.map((geo: GeographyProps) => (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  style={{
-                    default: {
-                      fill: '#DED8C1',
-                      outline: 'none'
-                    },
-                    hover: {
-                      fill: '#F53E4F',
-                      outline: 'none'
-                    },
-                    pressed: {
-                      fill: '#E42',
-                      outline: 'none'
-                    }
-                  }}
-                />
-              ))
-            }
-          </Geographies>
-          {locations.map(({ name, coordinates, description }) => (
-            <Marker key={name} coordinates={coordinates}>
-              <circle
-                r={8}
-                fill="#F53"
-                stroke="#fff"
-                strokeWidth={2}
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content={`${name} - ${description}`}
+      <ComposableMap
+        projectionConfig={{
+          scale: 100
+        }}
+      >
+        <Geographies geography={geoUrl}>
+          {({ geographies }) =>
+            geographies.map((geo) => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                style={{
+                  default: {
+                    fill: "#EAEAEC",
+                    outline: "none"
+                  },
+                  hover: {
+                    fill: "#F5F4F6",
+                    outline: "none"
+                  },
+                  pressed: {
+                    fill: "#E42",
+                    outline: "none"
+                  }
+                }}
               />
-            </Marker>
-          ))}
-        </ComposableMap>
-        <Tooltip id="my-tooltip" />
-      </div>
+            ))
+          }
+        </Geographies>
+        {locations.map(({ name, coordinates }) => (
+          <Marker key={name} coordinates={coordinates}>
+            <circle r={4} fill="#F53" />
+            <text
+              textAnchor="middle"
+              y={-10}
+              style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: "10px" }}
+            >
+              {name}
+            </text>
+          </Marker>
+        ))}
+      </ComposableMap>
     </motion.div>
   );
 };

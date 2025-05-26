@@ -1,19 +1,23 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { 
-  HeartIcon, 
-  ShareIcon, 
-  BookmarkIcon,
-  ChatBubbleLeftIcon,
+import {
+  CalendarIcon,
   ClockIcon,
-  UserIcon,
-  TagIcon,
+  ChatBubbleLeftIcon,
+  BookmarkIcon,
+  ShareIcon,
+  HeartIcon,
+  ArrowRightIcon,
+  ArrowLeftIcon,
   MagnifyingGlassIcon,
-  ChevronDownIcon,
-  ChevronUpIcon
+  AdjustmentsHorizontalIcon,
+  FunnelIcon,
+  UserIcon,
+  TagIcon
 } from '@heroicons/react/24/outline';
-import { HeartIcon as HeartIconSolid, BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
+import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
+import { BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 
 interface BlogPost {
   id: number;

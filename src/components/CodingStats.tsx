@@ -1,40 +1,44 @@
 import { motion } from 'framer-motion';
+import { CodeBracketIcon, CommandLineIcon, BeakerIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 
 const CodingStats = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      viewport={{ amount: 0.3 }}
-      className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-center"
+      className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg"
     >
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">📊 Coding Stats</h2>
-      <div className="flex flex-col items-center space-y-6">
-        {/* GitHub Stats Card */}
-        <img
-          src="https://github-readme-stats.vercel.app/api?username=Sachithra-228&show_icons=true&theme=radical"
-          alt="Sachithra's GitHub Stats"
-          className="w-full max-w-md rounded-lg shadow-md"
-        />
-        {/* Top Languages Card */}
-        <img
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=Sachithra-228&layout=compact&theme=radical"
-          alt="Sachithra's Top Languages"
-          className="w-full max-w-md rounded-lg shadow-md"
-        />
-        {/* Streak Stats Card - Optional, but nice */}
-        {/* You can add this if you prefer, or stick to the above two */}
-        {/*
-        <img
-          src="https://github-readme-streak-stats.herokuapp.com/?user=Sachithra-228&theme=radical"
-          alt="Sachithra's GitHub Streak"
-          className="w-full max-w-md rounded-lg shadow-md"
-        />
-        */}
-        <p className="text-gray-600 dark:text-gray-300 mt-4">
-          Check out my <a href="https://github.com/Sachithra-228" target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">GitHub profile</a> for more details.
-        </p>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Coding Statistics</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex items-center space-x-4">
+          <CodeBracketIcon className="w-8 h-8 text-blue-500" />
+          <div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Lines of Code</p>
+            <p className="text-2xl font-bold text-gray-900 dark:text-white">50,000+</p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-4">
+          <CommandLineIcon className="w-8 h-8 text-green-500" />
+          <div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Projects</p>
+            <p className="text-2xl font-bold text-gray-900 dark:text-white">20+</p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-4">
+          <BeakerIcon className="w-8 h-8 text-purple-500" />
+          <div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Experiments</p>
+            <p className="text-2xl font-bold text-gray-900 dark:text-white">100+</p>
+          </div>
+        </div>
+        <div className="flex items-center space-x-4">
+          <ChartBarIcon className="w-8 h-8 text-yellow-500" />
+          <div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Contributions</p>
+            <p className="text-2xl font-bold text-gray-900 dark:text-white">500+</p>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
