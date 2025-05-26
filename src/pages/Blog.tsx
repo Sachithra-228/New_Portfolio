@@ -19,6 +19,18 @@ import {
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import { BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/24/solid';
 
+// Import images
+import a1 from '../assets/a1.jpg';
+import a2 from '../assets/a2.jpg';
+import a3 from '../assets/a3.jpg';
+import a4 from '../assets/a4.jpg';
+import a5 from '../assets/a5.jpg';
+import a6 from '../assets/a6.jpg';
+import a7 from '../assets/a7.jpg';
+import a8 from '../assets/a8.jpg';
+import a9 from '../assets/a9.jpg';
+import a10 from '../assets/a10.jpg';
+
 interface BlogPost {
   id: number;
   title: string;
@@ -64,7 +76,7 @@ const Blog = () => {
       readTime: "5 min read",
       category: "Web Development",
       tags: ["React", "JavaScript", "Web Development"],
-      image: "/images/a1.jpg",
+      image: a1,
       likes: 42,
       comments: 8
     },
@@ -83,7 +95,7 @@ const Blog = () => {
       readTime: "7 min read",
       category: "Programming",
       tags: ["TypeScript", "JavaScript", "Programming"],
-      image: "/images/a2.jpg",
+      image: a2,
       likes: 38,
       comments: 12
     },
@@ -102,7 +114,7 @@ const Blog = () => {
       readTime: "6 min read",
       category: "CSS",
       tags: ["Tailwind CSS", "CSS", "Web Design"],
-      image: "/images/a3.jpg",
+      image: a3,
       likes: 45,
       comments: 15
     },
@@ -121,7 +133,7 @@ const Blog = () => {
       readTime: "8 min read",
       category: "Technology",
       tags: ["Web Development", "Technology", "Future"],
-      image: "/images/a4.jpg",
+      image: a4,
       likes: 52,
       comments: 20
     },
@@ -140,7 +152,7 @@ const Blog = () => {
       readTime: "9 min read",
       category: "Web Development",
       tags: ["React", "Performance", "Optimization"],
-      image: "/images/a5.jpg",
+      image: a5,
       likes: 48,
       comments: 18
     },
@@ -159,7 +171,7 @@ const Blog = () => {
       readTime: "7 min read",
       category: "Web Development",
       tags: ["React", "State Management", "Redux"],
-      image: "/images/a6.jpg",
+      image: a6,
       likes: 41,
       comments: 14
     },
@@ -178,7 +190,7 @@ const Blog = () => {
       readTime: "6 min read",
       category: "CSS",
       tags: ["CSS", "Web Design", "Styling"],
-      image: "/images/a7.jpg",
+      image: a7,
       likes: 36,
       comments: 11
     },
@@ -197,7 +209,7 @@ const Blog = () => {
       readTime: "8 min read",
       category: "Backend",
       tags: ["API", "Backend", "REST"],
-      image: "/images/a8.jpg",
+      image: a8,
       likes: 44,
       comments: 16
     },
@@ -216,7 +228,7 @@ const Blog = () => {
       readTime: "7 min read",
       category: "Testing",
       tags: ["React", "Testing", "Jest"],
-      image: "/images/a9.jpg",
+      image: a9,
       likes: 39,
       comments: 13
     },
@@ -235,7 +247,7 @@ const Blog = () => {
       readTime: "6 min read",
       category: "DevOps",
       tags: ["Deployment", "DevOps", "Hosting"],
-      image: "/images/a10.jpg",
+      image: a10,
       likes: 47,
       comments: 19
     }
