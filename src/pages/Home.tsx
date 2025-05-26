@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -27,8 +27,6 @@ import flashVideo from '../videos/flash.mp4';
 import walkingVideo from '../videos/walking.mp4';
 import speechVideo from '../videos/speech.mp4';
 
-// Import the Chatbot component
-import Chatbot from '../components/Chatbot';
 import Typewriter from '../components/Typewriter';
 
 const Home = () => {

@@ -81,24 +81,6 @@ const Contact = () => {
     }
   ];
 
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      url: 'https://github.com/Sachithra-228',
-      icon: 'github'
-    },
-    {
-      name: 'LinkedIn',
-      url: 'http://linkedin.com/in/sachithra-wijesinghe-5496a5270',
-      icon: 'linkedin'
-    },
-    {
-      name: 'YouTube',
-      url: 'https://www.youtube.com/@sachithra228',
-      icon: 'youtube'
-    }
-  ];
-
   return (
     <div className="relative w-full min-h-screen bg-gray-50 dark:bg-gray-900">
       <Helmet>

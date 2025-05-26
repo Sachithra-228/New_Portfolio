@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+// @ts-ignore
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import { Tooltip } from 'react-tooltip';
 
@@ -8,14 +8,21 @@ const geoUrl =
 
 // Placeholder data - replace with your actual locations
 const locations = [
-  { name: 'Remote Team Location A', coordinates: [-74.0060, 40.7128], description: 'Worked with team in 20XX' },
-  { name: 'Workshop City B', coordinates: [2.3522, 48.8566], description: 'Conducted workshop on YYYY' },
-  { name: 'Event Location C', coordinates: [139.6917, 35.6895], description: 'Attended event in ZZZZ' },
+  { name: 'Remote Team Location A', coordinates: [-74.0060, 40.7128] as [number, number], description: 'Worked with team in 20XX' },
+  { name: 'Workshop City B', coordinates: [2.3522, 48.8566] as [number, number], description: 'Conducted workshop on YYYY' },
+  { name: 'Event Location C', coordinates: [139.6917, 35.6895] as [number, number], description: 'Attended event in ZZZZ' },
 ];
 
-const InteractiveMap = () => {
-  const [tooltipContent, setTooltipContent] = useState('');
+interface GeographyProps {
+  rsmKey: string;
+  properties: any;
+}
 
+interface MarkerProps {
+  coordinates: [number, number];
+}
+
+const InteractiveMap = () => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -39,8 +46,8 @@ const InteractiveMap = () => {
           }}
         >
           <Geographies geography={geoUrl}>
-            {({ geographies }) =>
-              geographies.map((geo) => (
+            {({ geographies }: { geographies: GeographyProps[] }) =>
+              geographies.map((geo: GeographyProps) => (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
@@ -66,11 +73,9 @@ const InteractiveMap = () => {
             <Marker key={name} coordinates={coordinates}>
               <circle
                 r={8}
-                fill="#F53" // Marker color
-                stroke="#fff" // Marker outline
+                fill="#F53"
+                stroke="#fff"
                 strokeWidth={2}
-                onMouseEnter={() => setTooltipContent(`${name} - ${description}`)}
-                onMouseLeave={() => setTooltipContent('')}
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content={`${name} - ${description}`}
               />
